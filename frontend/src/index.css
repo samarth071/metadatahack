@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-base: #131318;
+  --color-bg-surface-lowest: #0e0e13;
+  --color-bg-surface-high: #2a292f;
+  --color-bg-surface-highest: #35343a;
+  --color-bg-surface-bright: #39383e;
+  
+  --color-accent: #c0c1ff;
+  --color-accent-container: #8083ff;
+  --color-secondary: #ffb95f;
+  --color-tertiary: #4ae176;
+  
+  --color-text-primary: #e4e1e9;
+  --color-text-muted: #c7c4d7;
+  --color-outline: #908fa0;
+  --color-outline-variant: rgba(144, 143, 160, 0.15);
+
+  --font-mono: "Space Grotesk", sans-serif;
+  --font-sans: "Manrope", sans-serif;
+  
+  --radius-xl: 1.5rem;
+}
+
+:root {
+  --bg-base: #131318;
+  --bg-panel: #0e0e13;
+  --border-muted: rgba(144, 143, 160, 0.15);
+  --accent: #c0c1ff;
+  --accent-glow: rgba(192, 193, 255, 0.15);
+}
+
+body {
+  background-color: var(--bg-base);
+  color: #e4e1e9;
+  font-family: 'Manrope', sans-serif;
+  overflow: hidden;
+  height: 100vh;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .font-terminal {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* Tonal Layering Utilities */
+.glass-panel {
+  background: rgba(53, 52, 58, 0.7);
+  backdrop-filter: blur(24px);
+  border: 1px solid var(--border-muted);
+}
+
+/* Node Glow Animations */
+@keyframes nodeGlow {
+  0%, 100% { box-shadow: 0 0 10px rgba(192, 193, 255, 0.2); }
+  50% { box-shadow: 0 0 25px rgba(192, 193, 255, 0.4), 0 0 50px rgba(192, 193, 255, 0.2); }
+}
+
+.node-executing {
+  animation: nodeGlow 0.8s ease-in-out infinite;
+}
+
+/* CRT Pulse for Main Actions */
+@keyframes crtPulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 15px rgba(192, 193, 255, 0.2); }
+  50% { opacity: 0.9; box-shadow: 0 0 30px rgba(192, 193, 255, 0.3); }
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #c0c1ff 0%, #8083ff 100%);
+  color: #1000a9;
+  animation: crtPulse 2s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: scale(0.98) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.slide-in {
+  animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom scrollbar - Neutral Tinted */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0e0e13;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #35343a;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #908fa0;
+}
+
+/* React Flow Overrides - The "No-Line" Aesthetic */
+.react-flow__node {
+  border: none !important;
+  background: transparent !important;
+}
+
+.react-flow__handle {
+  width: 10px !important;
+  height: 10px !important;
+  background: #c0c1ff !important;
+  border: 2px solid #131318 !important;
+  box-shadow: 0 0 8px rgba(192, 193, 255, 0.4);
+}
+
+.react-flow__edge-path {
+  stroke: #464554 !important;
+  stroke-width: 2 !important;
+}
+
+.react-flow__controls {
+  background: #1f1f25 !important;
+  border: none !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+}
+
+.react-flow__controls-button {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(144, 143, 160, 0.1) !important;
+  fill: #e4e1e9 !important;
+}
+
+.react-flow__minimap {
+  background: #1f1f25 !important;
+  border: 1px solid rgba(144, 143, 160, 0.15) !important;
+  border-radius: 12px !important;
+}
